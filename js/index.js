@@ -6,7 +6,11 @@ function loadscript(file){
    document.body.appendChild(script);
 }
 
-loadscript('./js/testsdk.js');
+loadscript('./js/jquery-3.4.1.js');
+
+setTimeout(function(){
+   loadscript('./js/testsdk.js');
+},1000)
 
 
    

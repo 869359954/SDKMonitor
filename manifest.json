@@ -26,6 +26,6 @@
           "run_at": "document_idle"
         }
     ],
-    "web_accessible_resources":["/js/testsdk.js"],
+    "web_accessible_resources":["/js/testsdk.js","/js/jquery-3.4.1.js"],
     "manifest_version": 2
 }
