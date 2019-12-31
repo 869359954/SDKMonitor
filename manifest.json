@@ -1,0 +1,31 @@
+{ 
+    "name": "SDK-Monitor", 
+    "description" : "sdk 插件",    
+    "version": "1.0",   
+    "browser_action": { 
+        "default_popup": "index.html",      
+        "default_icon": "./img/logo.jpg"
+    },
+    "icons":{
+        "128":"./img/logo.jpg"
+    },
+    "permissions": ["tabs","storage","http://*/*","https://*/*"],
+    "commands": { 
+        "_execute_browser_action": {    
+            "suggested_key": {       
+               "default": "Ctrl+Shift+S",          
+               "mac": "MacCtrl+Shift+S"
+        },        
+        "description": "Opens index.html"
+      }
+    },
+    "content_scripts":[
+        {
+          "matches": ["*://*/*"],
+          "js": ["./js/index.js"],
+          "run_at": "document_idle"
+        }
+    ],
+    "web_accessible_resources":["/js/testsdk.js"],
+    "manifest_version": 2
+}
