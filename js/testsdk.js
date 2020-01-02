@@ -11,17 +11,6 @@ function init(){
     }
     
     var sdkType = [['sensorsDataAnalytic201505','SensorsData'],['zhuge','诸葛 io'],['gio','GrowingIO'],['xiaonengjs','TalkingData'],['AnalysysAgent','易观'],['_hmt','百度统计'],['dataLayer','Google Analytics']];
-    
-    // window.onload = function(){
-    //     for(var i = 0;i < sdkType.length;i++){
-    //         SDKarr += testSDK(sdkType[i]) + '  ';
-    //     }
-    //     if(SDKarr.trim() === ''){
-    //         alert(defaultstr);
-    //     }else{
-    //         alert('监测到的 SDK 厂商有：'+ SDKarr);
-    //     }
-    // };
 
     $(document).ready(function(){
         for(var i = 0;i < sdkType.length;i++){
