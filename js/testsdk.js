@@ -1,5 +1,5 @@
 
-function init(){
+(function (){
     var SDKarr = '';
     var defaultstr = '此页面没有集成可统计的 SDK！';
     function testSDK([key,name]){
@@ -9,20 +9,33 @@ function init(){
             return '';
         }
     }
+    function getSDKType(){
+        var sdkType = [['sensorsDataAnalytic201505','SensorsData'],['zhuge','诸葛 io'],['gio','GrowingIO'],['xiaonengjs','TalkingData'],['AnalysysAgent','易观'],['_hmt','百度统计'],['dataLayer','Google Analytics']];
+        window.$(document).ready(function(){
+            for(var i = 0;i < sdkType.length;i++){
+                var sdktype = testSDK(sdkType[i]);
+                if(sdktype !== ''){
+                    SDKarr += testSDK(sdkType[i]) + '、';
+                }
+            }
+            if(SDKarr.trim() === ''){
+                postMessage({sdktitle : defaultstr});
+            }else{
+                postMessage({sdktitle : '监测到的 SDK 厂商有：',sdkdata : SDKarr});
+            }
+        });
+    }
     
-    var sdkType = [['sensorsDataAnalytic201505','SensorsData'],['zhuge','诸葛 io'],['gio','GrowingIO'],['xiaonengjs','TalkingData'],['AnalysysAgent','易观'],['_hmt','百度统计'],['dataLayer','Google Analytics']];
-
-    $(document).ready(function(){
-        for(var i = 0;i < sdkType.length;i++){
-            SDKarr += testSDK(sdkType[i]) + '  ';
+    function init(){
+        if(!window.$ || !window.$(document) || !window.$(document).ready){
+            window.postMessage('loadJQ', '*');
         }
-        if(SDKarr.trim() === ''){
-            alert(defaultstr);
-        }else{
-            alert('监测到的 SDK 厂商有：'+ SDKarr);
-        }
-    })
+        setTimeout(getSDKType,1000);
+    }
 
-}
+    function postMessage(data){
+        window.postMessage(data, '*');
+    }
+    init();
+})();
 
-init();

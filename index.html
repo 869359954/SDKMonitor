@@ -9,6 +9,7 @@
   <style>
     *{
       margin: 0px;
+      color: white;
     }
     .wrapper{
       margin: 0px;
@@ -30,6 +31,26 @@
       margin-left: 10px;
       margin-bottom: 10px;
     }
+    .resultWrapper{
+      margin-top: 30px;
+      text-align: center;
+    }
+    #displayDiv{
+      display: none;
+    }
+    .sdkMaker:hover{
+      cursor: pointer;
+    }
+    #getResultBtn{
+      cursor: pointer;
+      color: black;
+    }
+    #dataContent{
+      list-style: none;
+    }
+    #dataContent > div{
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -37,17 +58,16 @@
     <div class="logo">
         <img src="./img/logo.svg">
     </div>
-    <div class='info'>  本插件支持检测的 SDK 厂商有：</div>
-    <ul>
-      <li>SensorsData</li>
-      <li>诸葛 io</li>
-      <li>GrowingIO</li>
-      <li>TalkingData</li>
-      <li>易观</li>
-      <li>百度统计</li>
-      <li>Google Analytics</li>
-    </ul>
+    <div id="infoWrapper">
+      <div class='info'>  本插件支持检测的 SDK 厂商有：</div>
+      <ul id = 'store'></ul>
+    </div>
+    <div class="resultWrapper">
+      <button id = 'getResultBtn'>开始检测</button>
+      <div id='dataStatus'></div>
+      <div id='dataContent'></div>
+    </div>
   </div>
-  </script>
+  <script src="./js/popup.js"></script>
 </body>
 </html>
